@@ -19,7 +19,7 @@ pip install torch pandas transformers scikit-learn tqdm matplotlib
 
 ### 2. Data Preparation
 
-The raw datasets are already included in the /data folder. To prepare the combined training set:
+The raw datasets are already included in the /data folder. If you want to refresh the master dataset after adding new data or if you lose that file:
 
 Navigate to the root directory.
 
@@ -28,7 +28,7 @@ Run the dataset builder:
 ```Bash
 python scripts/Master\ Dataset\ Maker.py
 ```
-This script handles data cleaning, deduplication, and PII sanitization.
+This script handles data cleaning and deduplication.
 
 ### 3. Training the Model
 
