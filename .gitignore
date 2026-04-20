@@ -1,0 +1,11 @@
+# --- DATA (Including everything now) ---
+# We are commenting out the ignore line so your CSVs upload
+# data/*.csv 
+
+# --- MODEL ---
+# Ignore the heavy weights (250MB+)
+phishing_model_v1/*.safetensors
+phishing_model_v1/*.bin
+
+# DO NOT ignore the .json files! 
+# (Git will include them by default if you don't list them here)
