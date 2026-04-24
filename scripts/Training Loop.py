@@ -24,6 +24,20 @@ class PhishingDataset(Dataset):
 
     def __len__(self):
         return len(self.labels)
+    
+def get_device():
+    if torch.cuda.is_available():
+        # Best for: Teammates with NVIDIA GPUs (Windows/Linux)
+        device = torch.device("cuda")
+    elif torch.backends.mps.is_available():
+        # Best for: Your M2 Pro and other Apple Silicon Macs
+        device = torch.device("mps")
+    else:
+        # Fallback for: Intel Macs or laptops without dedicated GPUs
+        device = torch.device("cpu")
+    
+    print(f"--- Environment Ready: {device} ---")
+    return device
 
 def main():
     # 1. Setup & Path Management (NEW)
@@ -35,8 +49,7 @@ def main():
     # Create metrics folder if it doesn't exist
     os.makedirs(METRICS_DIR, exist_ok=True)
 
-    device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-    print(f"--- Environment Ready: {device} ---")
+    device = get_device()
 
     # Load from the correct relative path
     df = pd.read_csv(DATA_PATH).dropna()
